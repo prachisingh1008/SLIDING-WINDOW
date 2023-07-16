@@ -1,0 +1,72 @@
+//same elements are also included
+class Solution{   
+public:
+    long maximumSumSubarray(int K, vector<int> &Arr , int N){
+         int i=0;
+        int j=0;
+        long long sum=0;
+        long long mx=INT_MIN;
+       // unordered_set<int> uniqueElements;
+        if (K > N) {
+            return 0; // Return 0 if k is larger than the size of nums
+        }
+
+        while(j<N)
+        {
+            sum+=Arr[j];
+            
+            if(j-i+1<K)
+            j++;
+            else if (j - i + 1 == K)
+            {
+                mx=max(mx,sum);
+            sum-=Arr[i];
+                
+               
+            
+             
+            
+               
+                i++;
+                 j++;
+            
+            
+
+        }}
+    
+return (mx == INT_MIN) ? 0 : mx;
+        
+        
+        // code here 
+    }
+};
+
+//{ Driver Code Starts.
+int main() 
+{ 
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int N,K;
+        cin >> N >> K;;
+        vector<int>Arr;
+        for(int i=0;i<N;++i){
+            int x;
+            cin>>x;
+            Arr.push_back(x);
+        }
+        Solution ob;
+        cout << ob.maximumSumSubarray(K,Arr,N) << endl;
+    }
+    return 0; 
+} 
+
+Input:
+N = 4, K = 2
+Arr = [100, 200, 300, 400]
+Output:
+700
+Explanation:
+Arr3  + Arr4 =700,
+which is maximum.
