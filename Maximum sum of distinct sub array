@@ -1,0 +1,61 @@
+class Solution {
+public:
+    long long maximumSubarraySum(vector<int>& nums, int k) {
+       int i=0;
+        int j=0;
+        long long sum=0;
+        long long mx=INT_MIN;
+        unordered_set<int> uniqueElements;
+        if (k > nums.size()) {
+            return 0; // Return 0 if k is larger than the size of nums
+        }
+
+        while(j<nums.size())
+        {while (uniqueElements.count(nums[j]) > 0) {
+                sum -= nums[i];//tab tak htaata rahega jab tak same element hatt nahi jata kyunki subarray continuous hote hai
+                uniqueElements.erase(nums[i]);
+                i++;
+            }
+            sum+=nums[j];
+            uniqueElements.insert(nums[j]);
+          
+            if(j-i+1<k)
+            j++;// taki window required size ki hojaae
+            else if (j - i + 1 == k)
+            {
+                mx=max(mx,sum);
+            sum-=nums[i];//taki element kam karke left se right me 1 aage badh sake or new subarray bann sake
+                
+               
+            
+             
+            
+                uniqueElements.erase(nums[i]);
+                i++;
+                 j++;
+            
+            
+
+        }}
+    
+return (mx == INT_MIN) ? 0 : mx;// it means agar kuch change nahi hua to 0 return karo
+        
+        
+    }
+};
+
+Input: nums = [1,5,4,2,9,9,9], k = 3
+Output: 15
+Explanation: The subarrays of nums with length 3 are:
+- [1,5,4] which meets the requirements and has a sum of 10.
+- [5,4,2] which meets the requirements and has a sum of 11.
+- [4,2,9] which meets the requirements and has a sum of 15.
+- [2,9,9] which does not meet the requirements because the element 9 is repeated.
+- [9,9,9] which does not meet the requirements because the element 9 is repeated.
+We return 15 because it is the maximum subarray sum of all the subarrays that meet the conditions
+
+
+
+In the context of the code you provided, the unordered_set is used to ensure that all elements within the subarrays are distinct. It helps in avoiding duplicates and maintaining a set of unique elements within the sliding window.
+
+By inserting elements into the unordered_set, checking for duplicates, and erasing elements when necessary, the code ensures that the subarrays considered have distinct elements.
