@@ -19,7 +19,7 @@ public:
             sum+=nums[j];
             uniqueElements.insert(nums[j]);
           
-            if(j-i+1<k)
+            if(j-i+1<k)  //j-i+1 se window size nikal ta hai , j ending index and i starting index hai
             j++;// taki window required size ki hojaae
             else if (j - i + 1 == k)
             {
