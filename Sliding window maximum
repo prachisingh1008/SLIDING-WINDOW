@@ -1,0 +1,72 @@
+class Solution {
+public:
+   /* 
+   isme 3 test case pass nahi ho rahe the time limit exceed ho rahi thi
+   
+   vector<int> maxSlidingWindow(vector<int>& nums, int k) {
+          vector <int>a;
+        // your code here
+         int i=0;
+        int j=0;
+        
+        int mx=INT_MIN;
+       // unordered_set<int> uniqueElements;
+        int n=nums.size();
+        while(j<n)
+        {//p.push_back(arr[j]);
+        mx=max(mx,nums[j]);
+           // sum+=arr[j];
+           // cout<<"sum"<<sum<<" ";
+            
+            if(j-i+1<k)
+            j++;
+            else if (j - i + 1 == k)
+            {
+                //mx=max(mx,sum);
+                //mx= *max_element(p.begin(), p.end());
+               
+                a.push_back(mx);
+                 if (nums[i] == mx && j<n-1) {
+                    mx = *max_element(nums.begin() + i + 1, nums.begin() + j + 1);
+                }
+                
+            //sum-=arr[i];
+          //  p.erase(p.begin());
+            
+               
+                i++;
+                 j++;
+            
+            
+
+        }
+            
+        }
+    
+return a;
+        
+    }*/
+     vector<int> maxSlidingWindow(vector<int>& nums, int k) {
+        vector<int> result;
+        multiset<int, greater<int>> window;
+
+        for (int i = 0; i < nums.size(); i++) {
+            window.insert(nums[i]);
+
+            if (i >= k - 1) {
+                result.push_back(*window.begin());
+
+                window.erase(window.lower_bound(nums[i - k + 1]));
+            }
+        }
+
+        return result;
+    }
+};
+
+
+//A multiset is an ordered container in C++ Standard Template Library (STL) that allows multiple elements with the same value to be stored.
+//Unlike a set where each element is unique, a multiset allows duplicate elements. This means that you can insert multiple elements with the same value into a multiset. 
+The elements are automatically sorted in ascending order based on the default less-than comparison operator (<), or a custom comparison operator if specified.
+//In the context of the code, a multiset is used to store the elements within the sliding window in descending order. This allows us to easily access the maximum element using *window.begin(), 
+as the maximum element will be at the beginning of the multiset due to the custom comparator greater<int>.
