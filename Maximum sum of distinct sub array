@@ -56,6 +56,8 @@ We return 15 because it is the maximum subarray sum of all the subarrays that me
 
 
 
-In the context of the code you provided, the unordered_set is used to ensure that all elements within the subarrays are distinct. It helps in avoiding duplicates and maintaining a set of unique elements within the sliding window.
+In the context of the code you provided, the unordered_set is used to ensure that all elements within the subarrays are distinct. 
+It helps in avoiding duplicates and maintaining a set of unique elements within the sliding window.
 
-By inserting elements into the unordered_set, checking for duplicates, and erasing elements when necessary, the code ensures that the subarrays considered have distinct elements.
+By inserting elements into the unordered_set, checking for duplicates, and erasing elements when necessary, 
+the code ensures that the subarrays considered have distinct elements.
