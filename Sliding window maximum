@@ -10,30 +10,22 @@ public:
         int j=0;
         
         int mx=INT_MIN;
-       // unordered_set<int> uniqueElements;
+       
         int n=nums.size();
         while(j<n)
-        {//p.push_back(arr[j]);
+        {
         mx=max(mx,nums[j]);
-           // sum+=arr[j];
-           // cout<<"sum"<<sum<<" ";
-            
+           
             if(j-i+1<k)
             j++;
             else if (j - i + 1 == k)
             {
-                //mx=max(mx,sum);
-                //mx= *max_element(p.begin(), p.end());
                
                 a.push_back(mx);
                  if (nums[i] == mx && j<n-1) {
                     mx = *max_element(nums.begin() + i + 1, nums.begin() + j + 1);
                 }
-                
-            //sum-=arr[i];
-          //  p.erase(p.begin());
-            
-               
+        
                 i++;
                  j++;
             
