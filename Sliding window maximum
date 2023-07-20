@@ -65,8 +65,26 @@ return a;
 };
 
 
+Input: nums = [1,3,-1,-3,5,3,6,7], k = 3
+Output: [3,3,5,5,6,7]
+Explanation: 
+Window position                Max
+---------------               -----
+[1  3  -1] -3  5  3  6  7       3
+ 1 [3  -1  -3] 5  3  6  7       3
+ 1  3 [-1  -3  5] 3  6  7       5
+ 1  3  -1 [-3  5  3] 6  7       5
+ 1  3  -1  -3 [5  3  6] 7       6
+ 1  3  -1  -3  5 [3  6  7]      7
+Example 2:
+
+Input: nums = [1], k = 1
+Output: [1]
+
+
 //A multiset is an ordered container in C++ Standard Template Library (STL) that allows multiple elements with the same value to be stored.
-//Unlike a set where each element is unique, a multiset allows duplicate elements. This means that you can insert multiple elements with the same value into a multiset. 
-The elements are automatically sorted in ascending order based on the default less-than comparison operator (<), or a custom comparison operator if specified.
-//In the context of the code, a multiset is used to store the elements within the sliding window in descending order. This allows us to easily access the maximum element using *window.begin(), 
-as the maximum element will be at the beginning of the multiset due to the custom comparator greater<int>.
+//Unlike a set where each element is unique, a multiset allows duplicate elements. This means that you can insert multiple elements with the 
+same value into a multiset. The elements are automatically sorted in ascending order based on the default less-than comparison operator (<), 
+or a custom comparison operator if specified.
+//In the context of the code, a multiset is used to store the elements within the sliding window in descending order. This allows us to easily 
+access the maximum element using *window.begin(), as the maximum element will be at the beginning of the multiset due to the custom comparator greater<int>.
