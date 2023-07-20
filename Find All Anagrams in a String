@@ -8,15 +8,15 @@ public:
 
        for(int i=0;i<p.size();i++)
         {
-            m[p[i]]++;
+            m[p[i]]++;//mapping krr rahe ki jo string ka anagram check karna usme har element kitni baar aa rha hai
         }
-        int count = m.size();
+        int count = m.size();//size of map m
         while (j < s.size()) {
             if (m.count(s[j]) > 0) {
               
-                m[s[j]]--;
+                m[s[j]]--;//process of checking anagram
                 if (m[s[j]] == 0) {
-                    count--;
+                    count--;//ye isliy lia hai taki map dobara traverse na karna pade for printing final result
                 }
             }
 
@@ -24,12 +24,12 @@ public:
                 j++;
             } else if (j - i + 1 == p.size()) {
                 if (count == 0) {
-                    result.push_back(i);
+                    result.push_back(i);//means anagram exist
                 }
 
                 if (m.count(s[i]) > 0) {
-                    m[s[i]]++;
-                    if (m[s[i]] == 1) {
+                    m[s[i]]++;//kyunki s[i] remove karna hai na to value increase kr denge map me
+                    if (m[s[i]] == 1) {//agar 1 hai tabhi count++ isli kyunki agar value 1 se jayada hogi to uske liy already count ++ hua hoga
                         count++;
                     }
                 }
