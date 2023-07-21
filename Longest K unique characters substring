@@ -1,0 +1,58 @@
+
+
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution{
+  public:
+    int longestKSubstr(string s, int k) {
+    // your code here
+    int i=0,j=0;
+    int mx=INT_MIN;
+    unordered_map<char,int>u;
+    while(j<s.length())
+    {
+        u[s[j]]++;//mapping ho rahi
+        if(u.size()<k)//u.size() gives no of unique elements
+        j++;
+        if(u.size()==k)
+        {
+        mx=max(mx,j-i+1);
+        j++;
+        }
+        if(u.size()>k)
+        {
+            while(u.size()>k)
+            {
+            u[s[i]]--;//tabtak remove kate rehenge jab tak <k na ho jaae lekin agar 0 bhi ho gai value tabbhi size me count hogi key isliy poora vo vala letter hi remove kr denge
+            if(u[s[i]]==0)
+                u.erase(s[i]);//removed
+                i++;
+            }
+            j++;
+        }
+        
+    }
+    return mx==INT_MIN?-1:mx;
+    }
+};
+
+
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        string s;
+        cin >> s;
+        int k;
+        cin >> k;
+        Solution ob;
+        cout << ob.longestKSubstr(s, k) << endl;
+    }
+}
+
+Input:
+S = "aabacbebebe", K = 3
+Output: 7
+Explanation: "cbebebe" is the longest 
+substring with K distinct characters.
