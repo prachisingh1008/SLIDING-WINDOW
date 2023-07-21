@@ -37,7 +37,7 @@ if(sum==k)
     return c;}*/
 
 //2nd cose
-//ye dono types od no ke liy valid hai
+//ye dono types of no ke liy valid hai
     unordered_map<int, int> prevSum;// ek sum kitni baar aaya hai ye count karta hai ye
  
     int res = 0;
