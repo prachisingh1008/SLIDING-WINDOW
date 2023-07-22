@@ -1,0 +1,54 @@
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        int i=0,j=0;
+    int mx=0;
+    unordered_map<char,int>u;
+    while(j<s.length())
+    {
+        u[s[j]]++;
+       
+     
+    
+            while(u.size()<j-i+1)
+            {
+            u[s[i]]--;
+            if(u[s[i]]==0)
+                u.erase(s[i]);
+                i++;
+                
+            }
+          
+             mx = max(mx, j - i + 1);
+            
+            j++;
+       }
+        
+
+    return mx;
+    /*int i = 0, j = 0;
+        int mx = 0; // Initialize to 0 instead of INT_MIN
+        std::unordered_map<char, int> u;
+        
+        while (j < s.length()) {
+            u[s[j]]++;
+            
+            while (u.size() < j - i + 1) { // Fix this condition
+                u[s[i]]--;
+                if (u[s[i]] == 0)
+                    u.erase(s[i]);
+                i++;
+            }
+            
+            mx = std::max(mx, j - i + 1);
+            j++;
+        }
+        
+        return mx;*/
+        
+    }
+};
+
+Input: s = "abcabcbb"
+Output: 3
+Explanation: The answer is "abc", with the length of 3.
