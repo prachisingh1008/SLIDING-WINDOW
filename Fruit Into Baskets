@@ -1,0 +1,58 @@
+class Solution {
+public:
+    int totalFruit(vector<int>& fruits) {
+         int i=0,j=0;
+    int mx=INT_MIN;
+    unordered_map<int,int>u;
+    while(j<fruits.size())
+    {
+        u[fruits[j]]++;//mapping ho rahi
+        if(u.size()<2)//u.size() gives no of unique elements
+        j++;
+        if(u.size()==2)
+        {
+        mx=max(mx,j-i+1);
+        j++;
+        }
+        if(u.size()>2)
+        {
+            while(u.size()>2)
+            {
+            u[fruits[i]]--;//tabtak remove kate rehenge jab tak <k na ho jaae lekin agar 0 bhi ho gai value tabbhi size me count hogi key isliy poora vo vala letter hi remove kr denge
+            if(u[fruits[i]]==0)
+                u.erase(fruits[i]);//removed
+                i++;
+            }
+            j++;
+        }
+        
+    }
+    if(u.size()==1)
+    return(u[fruits[0]]);
+    return mx==INT_MIN?1:mx;
+    }
+};
+
+
+You want to collect as much fruit as possible. However, the owner has some strict rules that you must follow:
+
+You only have two baskets, and each basket can only hold a single type of fruit. There is no limit on the amount of fruit each basket can hold.
+Starting from any tree of your choice, you must pick exactly one fruit from every tree (including the start tree) while moving to the right. The picked fruits must fit in one of your baskets.
+Once you reach a tree with fruit that cannot fit in your baskets, you must stop.
+Given the integer array fruits, return the maximum number of fruits you can pick.
+
+ 
+
+Example 1:
+
+Input: fruits = [1,2,1]
+Output: 3
+Explanation: We can pick from all 3 trees.
+
+Input
+fruits =
+[1,1]
+
+Use Testcase
+Output
+2
